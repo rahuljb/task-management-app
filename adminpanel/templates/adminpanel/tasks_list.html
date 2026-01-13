@@ -1,0 +1,30 @@
+{% extends "adminpanel/base.html" %}
+{% block content %}
+<h2>Tasks</h2>
+<p><a href="{% url 'panel_task_create' %}">Create Task</a></p>
+
+<table border="1" cellpadding="6">
+  <tr>
+    <th>Title</th><th>Assigned To</th><th>Status</th><th>Due</th><th>Report</th><th>Actions</th>
+  </tr>
+  {% for t in tasks %}
+  <tr>
+    <td>{{ t.title }}</td>
+    <td>{{ t.assigned_to.username }}</td>
+    <td>{{ t.status }}</td>
+    <td>{{ t.due_date|default:"-" }}</td>
+    <td>
+      {% if t.status == "COMPLETED" %}
+        {{ t.worked_hours }} hrs
+      {% else %}
+        -
+      {% endif %}
+    </td>
+    <td>
+      <a href="{% url 'panel_task_detail' t.id %}">View</a> |
+      <a href="{% url 'panel_task_update' t.id %}">Update</a>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

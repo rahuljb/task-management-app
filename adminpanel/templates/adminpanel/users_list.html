@@ -1,0 +1,22 @@
+{% extends "adminpanel/base.html" %}
+{% block content %}
+<h2>Users & Admins</h2>
+<p><a href="{% url 'panel_user_create' %}">Create User/Admin</a></p>
+
+<table border="1" cellpadding="6">
+  <tr>
+    <th>Username</th><th>Role</th><th>Assigned Admin</th><th>Actions</th>
+  </tr>
+  {% for u in users %}
+  <tr>
+    <td>{{ u.username }}</td>
+    <td>{{ u.profile.role }}</td>
+    <td>{% if u.profile.assigned_admin %}{{ u.profile.assigned_admin.username }}{% else %}-{% endif %}</td>
+    <td>
+      <a href="{% url 'panel_user_change_role' u.id %}">Change Role</a> |
+      <a href="{% url 'panel_user_delete' u.id %}">Delete</a>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

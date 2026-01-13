@@ -1,0 +1,38 @@
+{% extends "adminpanel/base.html" %}
+{% block content %}
+
+<h2>Create Task</h2>
+
+<form method="POST">
+  {% csrf_token %}
+
+  <p>
+    {{ form.title.label_tag }}<br>
+    {{ form.title }}
+  </p>
+
+  <p>
+    {{ form.description.label_tag }}<br>
+    {{ form.description }}
+  </p>
+
+  <p>
+    {{ form.assigned_to.label_tag }}<br>
+    {{ form.assigned_to }}
+  </p>
+
+  <p>
+    {{ form.due_date.label_tag }}<br>
+    <small style="color: gray;">Format: YYYY-MM-DD</small><br>
+    {{ form.due_date }}
+  </p>
+
+  <p>
+    {{ form.status.label_tag }}<br>
+    {{ form.status }}
+  </p>
+
+  <button type="submit">Create</button>
+</form>
+
+{% endblock %}

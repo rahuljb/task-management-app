@@ -1,0 +1,16 @@
+{% extends "adminpanel/base.html" %}
+{% block content %}
+<h2>Task: {{ task.title }}</h2>
+<p><b>Assigned:</b> {{ task.assigned_to.username }}</p>
+<p><b>Status:</b> {{ task.status }}</p>
+<p><b>Description:</b> {{ task.description }}</p>
+<p><b>Due:</b> {{ task.due_date|default:"-" }}</p>
+
+{% if task.status == "COMPLETED" %}
+  <h3>Completion Report</h3>
+  <p><b>Worked Hours:</b> {{ task.worked_hours }}</p>
+  <p><b>Report:</b><br>{{ task.completion_report }}</p>
+{% endif %}
+
+<p><a href="{% url 'panel_task_update' task.id %}">Update Task</a></p>
+{% endblock %}

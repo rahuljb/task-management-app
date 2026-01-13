@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<head><title>Login</title></head>
+<body>
+  <h2>Panel Login</h2>
+
+  {% if error %}
+    <p style="color:red">{{ error }}</p>
+  {% endif %}
+
+  <form method="POST">
+    {% csrf_token %}
+    <input name="username" placeholder="Username"><br><br>
+    <input name="password" type="password" placeholder="Password"><br><br>
+    <button type="submit">Login</button>
+  </form>
+</body>
+</html>

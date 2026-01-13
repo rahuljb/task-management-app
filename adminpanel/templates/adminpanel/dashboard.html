@@ -1,0 +1,13 @@
+{% extends "adminpanel/base.html" %}
+{% block content %}
+<h2>Dashboard</h2>
+
+<ul>
+  <li><a href="{% url 'panel_tasks_list' %}">Tasks</a></li>
+
+  {% if request.user.profile.role == "SUPERADMIN" %}
+    <li><a href="{% url 'panel_users_list' %}">Manage Users/Admins</a></li>
+    <li><a href="{% url 'panel_assign_user_to_admin' %}">Assign User to Admin</a></li>
+  {% endif %}
+</ul>
+{% endblock %}

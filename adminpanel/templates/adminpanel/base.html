@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+  <title>Admin Panel</title>
+</head>
+<body>
+
+  <p>
+    <a href="{% url 'panel_dashboard' %}">Dashboard</a> |
+    <a href="{% url 'panel_users_list' %}">Users</a> |
+    <a href="{% url 'panel_tasks_list' %}">Tasks</a> |
+    <a href="{% url 'panel_logout' %}">Logout</a>
+  </p>
+
+  <hr>
+
+  {% if messages %}
+    <ul>
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  {% block content %}
+  {% endblock %}
+
+</body>
+</html>
