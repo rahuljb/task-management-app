@@ -39,9 +39,3 @@ JWT authentication and a custom Admin Panel using HTML templates.
 
 ---
 
-## Setup Instructions
-
-### 1. Clone the repository
-```bash
-git clone <REPOSITORY_URL>
-cd task-management-app
